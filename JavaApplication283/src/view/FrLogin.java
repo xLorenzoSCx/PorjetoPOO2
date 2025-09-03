@@ -5,6 +5,13 @@
  */
 package view;
 
+import Utils.Util;
+import com.sun.glass.events.KeyEvent;
+import controller.UsuarioController;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aluno.saolucas
@@ -39,6 +46,11 @@ public class FrLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         pnlPrincipal.setBackground(new java.awt.Color(255, 255, 102));
         pnlPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,6 +73,11 @@ public class FrLogin extends javax.swing.JFrame {
         edtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 edtSenhaActionPerformed(evt);
+            }
+        });
+        edtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                edtSenhaKeyPressed(evt);
             }
         });
         pnlPrincipal.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 199, 250, -1));
@@ -114,14 +131,59 @@ public class FrLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-       logar();
+        logar();
     }//GEN-LAST:event_btnEntrarMouseClicked
 
-    private void logar(){
-        //ler os campos
-        //guardar os dados
-        
+    private void edtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSenhaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            logar();
+        }
+    }//GEN-LAST:event_edtSenhaKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setIconImage(Util.getIcone());
+    }//GEN-LAST:event_formWindowOpened
+
+    private boolean verificarCampos() {
+        if (edtUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Usuário em branco");
+            return false;
+        }
+
+        if (new String(edtSenha.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Senha em branco");
+            return false;
+        }
+        return true;
     }
+
+    private void logar() {
+        //ler os campos
+        String usuario = edtUsuario.getText();
+
+        String senha = new String(edtSenha.getPassword());
+
+        UsuarioController controller = new UsuarioController();
+
+        if (verificarCampos()) {
+
+            if (controller.autenticar(usuario, senha)) {
+                //Entra no sistema
+                FrMenu telaMenu = new FrMenu();
+                telaMenu.setVisible(true);
+                this.setVisible(false);
+
+            } else {
+                //Mensagem de usuário não encontrado
+                JOptionPane.showMessageDialog(rootPane, "Usuário não encontrado");
+            }
+        }
+
+        //guardar os dados
+        //consultar no banco de dados
+        //verificar se tem ou não o usuário
+    }
+
     /**
      * @param args the command line arguments
      */

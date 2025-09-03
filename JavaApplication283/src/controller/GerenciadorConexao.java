@@ -13,7 +13,7 @@ public class GerenciadorConexao {
 
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/dbprojeto";
     private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "";
 
     private Connection conexao;
 
@@ -36,9 +36,9 @@ public class GerenciadorConexao {
         return comando;
 
     }
-
+ //1 Definição
     public void fecharConexao() {
-        //1 Definição
+       
 
         try {
             if (conexao != null) {
@@ -49,7 +49,7 @@ public class GerenciadorConexao {
                     .log(Level.SEVERE, null, erro);
         }
     }
-
+//2 Definição
     public void fecharConexao(PreparedStatement comando) {
         fecharConexao();
 
@@ -62,7 +62,7 @@ public class GerenciadorConexao {
                     .log(Level.SEVERE, null, erro);
         }
     }
-
+//3 Definição
     public void fecharConexao(PreparedStatement comando, ResultSet resultado) {
         fecharConexao(comando);
 
@@ -78,3 +78,4 @@ public class GerenciadorConexao {
     }
 
 };
+ 
