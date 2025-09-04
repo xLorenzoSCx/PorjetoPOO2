@@ -6,6 +6,9 @@
 package view;
 
 import Utils.Util;
+import controller.UsuarioController;
+import javax.swing.JOptionPane;
+import model.Usuario;
 
 /**
  *
@@ -33,18 +36,32 @@ public class FrCadUsuario extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnCancelar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
-        txtNome = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        txtData = new javax.swing.JFormattedTextField();
-        txtSenha = new javax.swing.JPasswordField();
+        edtNome = new javax.swing.JTextField();
+        edtEmail = new javax.swing.JTextField();
+        edtDataNascimento = new javax.swing.JFormattedTextField();
         chkAtivo = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lblSenha = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        btnCancelar1 = new javax.swing.JButton();
+        btnSalvar1 = new javax.swing.JButton();
+        edtNome1 = new javax.swing.JTextField();
+        edtEmail1 = new javax.swing.JTextField();
+        edtData1 = new javax.swing.JFormattedTextField();
+        edtSenha = new javax.swing.JPasswordField();
+        chkAtivo1 = new javax.swing.JCheckBox();
+        jLabel12 = new javax.swing.JLabel();
+        edtConfirmarSenha = new javax.swing.JPasswordField();
+        lblConfirmarSenha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -61,72 +78,245 @@ public class FrCadUsuario extends javax.swing.JDialog {
         jLabel1.setText("Cadastro");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 32, 173, 68));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Nome");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 118, -1, -1));
+        lblNome.setForeground(new java.awt.Color(0, 0, 0));
+        lblNome.setText("Nome");
+        jPanel1.add(lblNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 118, -1, -1));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Email");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 170, -1, -1));
-
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Senha");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 228, -1, -1));
+        lblEmail.setForeground(new java.awt.Color(0, 0, 0));
+        lblEmail.setText("Email");
+        jPanel1.add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 170, -1, -1));
 
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Data de nascimento");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 276, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
 
         btnCancelar.setText("Cancelar");
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 371, 90, 30));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 90, 30));
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/serra.png"))); // NOI18N
         btnSalvar.setText("Salvar");
-        jPanel1.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, -1, -1));
-        jPanel1.add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 140, 330, -1));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 192, 330, -1));
-        jPanel1.add(txtData, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 300, 113, -1));
-
-        txtSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSenhaActionPerformed(evt);
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
             }
         });
-        jPanel1.add(txtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 248, 330, -1));
+        jPanel1.add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
+        jPanel1.add(edtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 140, 330, -1));
+        jPanel1.add(edtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 192, 330, -1));
+
+        edtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        jPanel1.add(edtDataNascimento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 113, -1));
 
         chkAtivo.setText("Ativo");
-        jPanel1.add(chkAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, -1, -1));
+        jPanel1.add(chkAtivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/userIcone.png"))); // NOI18N
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Cadastro");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 32, 173, 68));
+
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Nome");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 118, -1, -1));
+
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Email");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 170, -1, -1));
+
+        lblSenha.setForeground(new java.awt.Color(0, 0, 0));
+        lblSenha.setText("Senha");
+        jPanel2.add(lblSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 228, -1, -1));
+
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Data de nascimento");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+
+        btnCancelar1.setText("Cancelar");
+        btnCancelar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelar1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnCancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 90, 30));
+
+        btnSalvar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/serra.png"))); // NOI18N
+        btnSalvar1.setText("Salvar");
+        btnSalvar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvar1MouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnSalvar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
+        jPanel2.add(edtNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 140, 330, -1));
+        jPanel2.add(edtEmail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 192, 330, -1));
+
+        edtData1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        jPanel2.add(edtData1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 113, -1));
+
+        edtSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtSenhaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(edtSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(41, 248, 330, -1));
+
+        chkAtivo1.setText("Ativo");
+        jPanel2.add(chkAtivo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/userIcone.png"))); // NOI18N
+        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, -1));
+
+        edtConfirmarSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edtConfirmarSenhaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(edtConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 330, -1));
+
+        lblConfirmarSenha.setForeground(new java.awt.Color(0, 0, 0));
+        lblConfirmarSenha.setText("Confirmar Senha");
+        jPanel2.add(lblConfirmarSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
+    private void edtConfirmarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtConfirmarSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSenhaActionPerformed
+    }//GEN-LAST:event_edtConfirmarSenhaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-         this.setIconImage(Util.getIcone());
+        this.setIconImage(Util.getIcone());
     }//GEN-LAST:event_formWindowOpened
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarMouseClicked
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        gravar();
+    }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void btnCancelar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelar1MouseClicked
+
+    private void btnSalvar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvar1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvar1MouseClicked
+
+    private void edtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edtSenhaActionPerformed
+
+    private void gravar() {
+        //validar os campos
+        if (!verificarCampos()) {
+            return;
+
+        }
+        //ler os campos e guardar em um objeto
+        Usuario usu = new Usuario();
+        usu.setNome(edtNome.getText());
+        usu.setEmail(edtEmail.getText());
+        usu.setSenha(Util.calcularHash(new String(edtSenha.getPassword())));
+        usu.setData(Util.converterStringToDate(edtDataNascimento.getText()));
+        usu.setAtivo(chkAtivo.isSelected());
+
+        //enviar para o banco de dados
+        UsuarioController controller = new UsuarioController();
+        if (controller.inserir(usu)) {
+            JOptionPane.showMessageDialog(null, "Usuário inserido com sucesso!!!");
+            this.dispose();
+
+        };
+
+    }
+
+    private boolean verificarCampos() {
+        if (edtNome.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo 'Nome' em branco");
+            return false;
+        }
+
+        if (edtEmail.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo 'Email' em branco");
+            return false;
+        }
+
+        if (new String(edtConfirmarSenha.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Campo 'Senha' em branco");
+            return false;
+        }
+        //^ inicio da linha
+        //$ final da linha 
+        //[] conjunto de caracteres
+        // + quantidade de vezes que o conjunto pode aparecer
+        // + 1 ou mais vezes
+        //* 0 ou mais vezes
+        //{5} 5 vezes
+        //{2} 2 vezes
+
+        if (!edtNome.getText().matches("^[\\p{L}]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Nome' possui um formato inválido");
+            return false;
+        }
+
+        if (!edtEmail.getText().matches("^[a-z0-9_.]+@[a-z0-9_.]+.[a-z]+$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Email' possui um formato inválido");
+            return false;
+        }
+
+        if (!edtDataNascimento.getText().matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}$")) {
+            JOptionPane.showMessageDialog(null,
+                    "O campo 'Data de nascimento' possui um formato inválido");
+            return false;
+        }
+
+        if (new String(edtConfirmarSenha.getPassword()).length() < 6) {
+            JOptionPane.showMessageDialog(null,
+                    "A senha deve ser maior que 6 dígitos");
+            return false;
+        }
+
+        String senha = new String(edtSenha.getPassword());
+        String confirmarSenha = new String(edtConfirmarSenha.getPassword());
+        if (!senha.equals(confirmarSenha)) {
+            JOptionPane.showMessageDialog(null, "As senhas devem ser iguais");
+            return false;
+        }
+
+        return true;
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -168,18 +358,32 @@ public class FrCadUsuario extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCancelar1;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnSalvar1;
     private javax.swing.JCheckBox chkAtivo;
+    private javax.swing.JCheckBox chkAtivo1;
+    private javax.swing.JPasswordField edtConfirmarSenha;
+    private javax.swing.JFormattedTextField edtData1;
+    private javax.swing.JFormattedTextField edtDataNascimento;
+    private javax.swing.JTextField edtEmail;
+    private javax.swing.JTextField edtEmail1;
+    private javax.swing.JTextField edtNome;
+    private javax.swing.JTextField edtNome1;
+    private javax.swing.JPasswordField edtSenha;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JFormattedTextField txtData;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblConfirmarSenha;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblSenha;
     // End of variables declaration//GEN-END:variables
 }
