@@ -49,15 +49,30 @@ public class Util {
             byte[] digest = sha1.digest();
 
             //converta o hash de bytes para uma representação hexadecimal
-
             for (byte b : digest) {
                 hashSHA1 = hashSHA1 + String.format("%02x", b);
             }
-           
+
         } catch (NoSuchAlgorithmException e) {
             System.err.println("Algoritmo SHA1 não encontrado");
         }
 
         return hashSHA1;
     }
+
+    public static String converterDateToString(Date data) {
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd/mm/yyyy");
+
+        String texto = "";
+
+        try {
+            //Ira formatar a data para o formato dd/mm/yyyy
+            texto = formato.format(data);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao formatar a data");
+        }
+        return texto;
+    }
+
 }

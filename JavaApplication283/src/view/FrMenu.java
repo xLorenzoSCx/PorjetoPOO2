@@ -21,7 +21,7 @@ public class FrMenu extends javax.swing.JFrame {
      */
     public FrMenu() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
     }
 
@@ -106,6 +106,11 @@ public class FrMenu extends javax.swing.JFrame {
         mnConsultas.setText("Consultas");
 
         miConUsuarios.setText("Usuários");
+        miConUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miConUsuariosActionPerformed(evt);
+            }
+        });
         mnConsultas.add(miConUsuarios);
 
         jMenuItem3.setText("???");
@@ -133,7 +138,7 @@ public class FrMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void miUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miUsuariosActionPerformed
-        
+
     }//GEN-LAST:event_miUsuariosActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -148,6 +153,11 @@ public class FrMenu extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setIconImage(Util.getIcone());
     }//GEN-LAST:event_formWindowOpened
+
+    private void miConUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miConUsuariosActionPerformed
+        FrConUsuario telaConUsuario = new FrConUsuario(this, rootPaneCheckingEnabled);
+        telaConUsuario.setVisible(true);
+    }//GEN-LAST:event_miConUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
